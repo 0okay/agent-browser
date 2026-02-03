@@ -174,7 +174,7 @@ fn is_daemon_running(session: &str) -> bool {
     if let Some(port) = get_port_for_session(session) {
         TcpStream::connect_timeout(
             &format!("127.0.0.1:{}", port).parse().unwrap(),
-            Duration::from_millis(100),
+            Duration::from_millis(250),
         )
         .is_ok()
     } else {
@@ -193,7 +193,7 @@ fn daemon_ready(session: &str) -> bool {
         if let Some(port) = get_port_for_session(session) {
             TcpStream::connect_timeout(
                 &format!("127.0.0.1:{}", port).parse().unwrap(),
-                Duration::from_millis(50),
+                Duration::from_millis(250),
             )
             .is_ok()
         } else {
